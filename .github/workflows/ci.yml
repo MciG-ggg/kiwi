@@ -74,8 +74,9 @@ jobs:
           Invoke-WebRequest -Uri $protocUrl -OutFile "$env:RUNNER_TEMP\$protocZip"
           Expand-Archive -Path "$env:RUNNER_TEMP\$protocZip" -DestinationPath $protocPath
           echo "$protocPath\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-
+      
       - run: make lint
+      - run: make unwarp-check
 
   build-and-test:
     strategy:

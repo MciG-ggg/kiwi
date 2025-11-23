@@ -55,6 +55,10 @@ lint:
 	@echo "Linting code..."
 	@cargo clippy --manifest-path ./Cargo.toml --all-features --workspace -- -D warnings
 
+unwarp-check:
+	@echo "Running unwarp checks..."
+	@./scripts/clippy-check.sh
+
 help:
 	@echo "Available commands:"
 	@echo "  build         - Build the project"
@@ -63,6 +67,7 @@ help:
 	@echo "  clean         - Clean the project"
 	@echo "  fmt           - Format the code"
 	@echo "  lint          - Lint the code"
+	@echo "  unwarp-check  - Check both unwrap() and expect() (default CI behavior)"
 	@echo "  help          - Show this help message"
 
-.PHONY: build release run test clean fmt lint help
+.PHONY: build release run test clean fmt lint unwarp-check unwarp-check-all unwarp-fix help
